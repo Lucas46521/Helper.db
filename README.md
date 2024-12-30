@@ -1,4 +1,4 @@
-## ![1735579858543.png](https://i.postimg.cc/8crqQ3YQ/1735579858543.png)
+## ![HelperDbLogo.png](https://raw.githubusercontent.com/Lucas46521/Helper.db/refs/heads/main/HelperDbLogo2.png)
 **NPM:** [npmjs.com/helper.db](https://www.npmjs.com/package/helper.db)
 
 Helper.db é uma package de código aberto destina-se a fornecer uma maneira fácil para iniciantes e pessoas de todos os níveis acessarem e armazenarem dados em um ambiente de baixo a médio volume. Todos os dados são armazenados persistentemente por meio de [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3) ou [mysql2](https://www.npmjs.com/package/mysql2) e traz vários outros recursos de qualidade de vida.
