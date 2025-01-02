@@ -146,18 +146,111 @@ const db = new HelperDB({ driver: memoryDriver });
 await db.set("userInfo", { difficulty: "Easy" });
 ```
 
-## Mudanças na v1.0.0:
+# Changelogs
 
-- **Correção de bug** relacionado à conexão do mongoDriver.
-- **Adição do método .search()**.
+## 1.0.3
 
-### .search()
+<details>
+<summary>Novidades</summary>
 
-O método `.search()` permite buscar um termo em uma coleção de dados armazenados no banco de dados. Ele oferece suporte a busca por propriedades específicas dentro de objetos, além de realizar buscas em arrays e strings. Caso não seja fornecido um termo ou uma propriedade, será lançada uma exceção.
+### Adição de Eventos
 
-#### Assinatura do método:
-```js
-const term = '' //termo para ser pesquisado (opicional se property for fornecida)
-const property = //propriedade a ser pesquisada (opcional se term for fornecido)
-async search(term, property = null);
-```
+- Eventos adicionados para maior controle e integração.
+
+### Novas Funções
+
+> #### **async in(term, property = null, key = "")**
+
+> - **Descrição**: Filtra dados que contenham o termo especificado em uma propriedade ou valor.
+>
+> ```js
+> await db.in("Lucas", "nome"); // Busca onde a propriedade 'nome' contém 'Lucas'
+> await db.in("admin");         // Busca por qualquer valor que contenha 'admin'
+> ```
+
+---
+
+> #### **async between(min, max, property = null, key = "")**
+
+> Descrição: Filtra valores numéricos que estejam entre min e max.
+
+> ```js
+> await db.between(10, 20, "idade"); // Busca onde a propriedade 'idade' está entre 10 e 20
+> await db.between(5, 15);           // Busca por qualquer valor numérico entre 5 e 15
+> ```
+
+---
+
+> #### **async endsWith(query, key = "")**
+
+> Descrição: Retorna entradas com IDs que terminam com o termo especificado.
+
+> ```js
+> await db.endsWith("123"); // Busca IDs que terminam com '123'
+> ```
+
+---
+
+> #### **async startsWith(query, key = "")**
+
+> Descrição: Retorna entradas com IDs que começam com o termo especificado. (Agora suporta arrays de termos).
+
+> ```js
+> await db.startsWith("user");         // Busca IDs que começam com 'user'
+> await db.startsWith(["adm", "mod"]); // Suporte para múltiplos termos
+> ```
+
+---
+
+> #### **async regex(pattern, property = null, key = "")**
+
+> Descrição: Filtra valores que correspondem a uma expressão regular.
+
+> ```js
+> await db.regex(/^L.*/, "nome"); // Busca onde a propriedade 'nome' começa com 'L'
+> await db.regex(/@gmail\.com$/); // Busca valores terminando com '@gmail.com'
+> ```
+
+---
+
+> #### **async compare(property, operator, value, key = "")**
+
+> Descrição: Compara valores de propriedades utilizando operadores lógicos.
+
+> ```js
+> await db.compare("idade", ">", 18);       // Busca onde 'idade' é maior que 18
+> await db.compare("status", "==", "ativo"); // Busca onde 'status' é 'ativo'
+> ```
+
+---
+
+> #### **async custom(filterFunction, key = "")**
+
+> Descrição: Permite criar filtros personalizados utilizando uma função assíncrona.
+
+> ```js
+> await db.custom(async (entry) => entry.value.ativo === true); // Busca onde 'ativo' é true
+> ```
+
+</details>
+
+## 1.0.0
+
+<details>
+<summary>Detalhes</summary>Correções
+
+##### **Resolução de bug na conexão com o mongoDriver.**
+
+#### **Novidades**
+
+> #### **.search(term, property = null)**
+
+> **Descrição: Permite buscar termos em coleções de dados, suportando propriedades específicas, arrays e strings.**
+
+#### Exemplo
+> ```js
+> await db.search("Lucas", "nome"); // Busca onde 'nome' contém 'Lucas'
+> await db.search("admin");         // Busca por qualquer valor que contenha 'admin'
+> ```
+
+</details>

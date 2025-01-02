@@ -1,1 +1,7 @@
 node_modules/
+.git
+.cache
+.replit
+replit.nix
+.upm
+.npmignore

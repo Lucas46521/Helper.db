@@ -1,6 +1,6 @@
 {
-    "name": "Helper.db",
-    "version": "9.1.7",
+    "name": "helper.db",
+    "version": "1.0.3",
     "description": "Uma package fácil, eficiente e persistente para better-sqlite3, projetado para ser simples de configurar e usar. Fork do nosso amado quick.db, criado por lucas46521 para adicionar funções extras e corrigir erros.",
     "main": "out/index.js",
     "types": "out/index.d.ts",
@@ -8,8 +8,8 @@
         "@faker-js/faker": "^9.3.0",
         "@types/better-sqlite3": "^7.6.12",
         "@types/jest": "^27.0.3",
-        "@types/lodash": "^4.14.178",
-        "@types/write-file-atomic": "^4.0.0",
+        "@types/lodash": "^4.17.13",
+        "@types/write-file-atomic": "^4.0.3",
         "@typescript-eslint/eslint-plugin": "^5.8.1",
         "@typescript-eslint/parser": "^5.8.1",
         "better-sqlite3": "^7.4.5",
@@ -22,7 +22,7 @@
         "ts-jest": "^29.0.3",
         "typedoc": "^0.23.26",
         "typescript": "^4.5.4",
-        "write-file-atomic": "^5.0.0"
+        "write-file-atomic": "^6.0.0"
     },
     "dependencies": {
         "lodash": "^4.17.21"
@@ -32,8 +32,6 @@
         "build": "tsc",
         "lint": "eslint --ext \".ts\" ./src",
         "prettier": "prettier --write ./src",
-        "prepublishOnly": "tsc",
-        "prepare": "tsc",
         "docgen": "typedoc"
     },
     "lint-staged": {
@@ -49,11 +47,12 @@
         "values",
         "easy",
         "quick",
+        "quick.db",
         "sqlite",
         "sqlite3",
         "db"
     ],
-    "author": "TrueXPixels",
+    "author": "Lucas46521",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/TrueXPixels/quick.db/issues"
